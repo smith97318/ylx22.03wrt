@@ -1,8 +1,13 @@
 #!/bin/sh
 
+#
+rm -rf package/kernel/mac80211
+
 btime=`date +%Y-%m-%d`
 case $1 in
      x5)
+      #   tar zxvf package/kernel/mac80211.orig.tar.gz -C package/kernel/
+        tar zxvf package/kernel/mac80211.ipq60xx.tar.gz -C package/kernel/
         rm -rf files
         cp ylx_files/x5/x5.config .config
         cp ylx_files/x5/files/ . -rf
@@ -12,6 +17,8 @@ case $1 in
         ;;
       x2)
          # rm -rf files
+         tar zxvf package/kernel/mac80211.orig.tar.gz -C package/kernel/
+      #   tar zxvf package/kernel/mac80211.ipq60xx.tar.gz -C package/kernel/
          cp ylx_files/x2/x5.config .config
          # cp ylx_files/x5/files/ . -rf
          make V=s $2
