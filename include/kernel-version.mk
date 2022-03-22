@@ -31,10 +31,6 @@ ifdef KERNEL_TESTING_PATCHVER
 endif
 endif
 
-ifeq ($(CONFIG_TARGET_ipq60xx),y)
-LINUX_VERSION-5.4 = .164
-LINUX_KERNEL_HASH-5.4.164 = 2d692089dfd02e238d2164f8a599db21e04dab8d4e291c3ccbd863bcd5b00e6a
-endif
 
 split_version=$(subst ., ,$(1))
 merge_version=$(subst $(space),.,$(1))
@@ -45,3 +41,8 @@ KERNEL_PATCHVER ?= $(KERNEL)
 # disable the md5sum check for unknown kernel versions
 LINUX_KERNEL_HASH:=$(LINUX_KERNEL_HASH-$(strip $(LINUX_VERSION)))
 LINUX_KERNEL_HASH?=x
+
+ifeq ($(CONFIG_TARGET_ipq60xx),y)
+LINUX_VERSION = 5.4.164
+LINUX_KERNEL_HASH = 2d692089dfd02e238d2164f8a599db21e04dab8d4e291c3ccbd863bcd5b00e6a
+endif
