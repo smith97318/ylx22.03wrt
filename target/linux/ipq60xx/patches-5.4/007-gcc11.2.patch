@@ -1,0 +1,29 @@
+Index: linux-5.4.164/drivers/soc/qcom/ctx-save.c
+===================================================================
+--- linux-5.4.164.orig/drivers/soc/qcom/ctx-save.c
++++ linux-5.4.164/drivers/soc/qcom/ctx-save.c
+@@ -1456,9 +1456,9 @@ static int ctx_save_probe(struct platfor
+ 
+ #ifdef CONFIG_QCA_MINIDUMP
+ 	ret = register_module_notifier(&wlan_module_exit_nb);
+-    if (ret)
++    if (ret) {
+         dev_err(&pdev->dev, "Failed to register WLAN  module exit notifier\n");
+-
++	}
+ 	ret = atomic_notifier_chain_register(&panic_notifier_list,
+ 				&wlan_panic_nb);
+ 	if (ret)
+Index: linux-5.4.164/net/ipv6/ip6mr.c
+===================================================================
+--- linux-5.4.164.orig/net/ipv6/ip6mr.c
++++ linux-5.4.164/net/ipv6/ip6mr.c
+@@ -105,7 +105,7 @@ static ip6mr_mfc_event_offload_callback_
+ 
+ #ifdef CONFIG_IPV6_MROUTE_MULTIPLE_TABLES
+ #define ip6mr_for_each_table(mrt, net) \
+-	list_for_each_entry_rcu(mrt, &net->ipv6.mr_tables, list)
++	list_for_each_entry_rcu(mrt, &net->ipv6.mr6_tables, list)
+ 
+ static struct mr_table *ip6mr_mr_table_iter(struct net *net,
+ 					    struct mr_table *mrt)
