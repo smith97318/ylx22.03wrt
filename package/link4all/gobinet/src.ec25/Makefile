@@ -12,11 +12,6 @@ CROSS_COMPILE :=
 endif
 ifeq ($(KDIR),)
 KDIR := /lib/modules/$(shell uname -r)/build
-ifeq ($(ARCH),i686)
-ifeq ($(wildcard $KDIR/arch/$ARCH),)
-ARCH=i386
-endif
-endif
 endif
 
 default:
