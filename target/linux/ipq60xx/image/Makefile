@@ -49,7 +49,7 @@ define Device/ylx_x5
 	$(call Device/UbiFit)
 	DEVICE_VENDOR := YLX
 	DEVICE_MODEL := X5
-	DEVICE_DTS_CONFIG := config@cp01-c1
+	DEVICE_DTS_CONFIG := config@cp01-c3
 	SOC := ipq6018
 	BLOCKSIZE := 128k
 	PAGESIZE := 2048
